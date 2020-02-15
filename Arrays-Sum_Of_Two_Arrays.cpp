@@ -1,62 +1,47 @@
-#include <iostream>
-using namespace std;
+#include <stdio.h>
+
 int main()
 {
-    int n, m, carry = 0, tmp;
-    cin >> n;
-    short A[n];
-    for (int i = 0; i < n; i++)
-    {
-        cin >> A[i];
-    }
-    cin >> m;
-    short B[m];
-    for (int i = 0; i < m; i++)
-    {
-        cin >> B[i];
-    }
-    short res[max(n, m) + 2];
-    for (int i = min(n, m) - 1, j = max(n, m) + 1; i >= 0; i--, j--)
-    {
-        tmp = A[i] + B[i] + carry;
-        res[j] = tmp % 10;
-        carry = tmp / 10;
-    }
-    int i = max(m, n) + 2 - min(m, n);
-    if (n > m)
-    {
-        while (carry > 0)
-        {
-            res[i] = (A[i] + carry) % 10;
-            carry = (A[i] + carry) / 10;
-            i--;
-        }
-        while (i >= 0)
-        {
-            res[i] = A[i];
-            i--;
-        }
-    }
+    int n, m, i, j, carry = 0, temp, k;
+    int a[1000], b[1000], c[1000];
+    scanf("%d", &n);
+    for (i = 0; i < n; i++)
+        scanf("%d", a + i);
+    scanf("%d", &m);
+    for (i = 0; i < m; i++)
+        scanf("%d", b + i);
+    i = n - 1;
+    j = m - 1;
+    if (n >= m)
+        k = n - 1;
     else
+        k = m - 1;
+    while (i >= 0 && j >= 0)
     {
-        while (carry > 0)
-        {
-            res[i] = (B[i] + carry) % 10;
-            carry = (B[i] + carry) / 10;
-            i--;
-        }
-        while (i >= 0)
-        {
-            res[i] = B[i];
-            i--;
-        }
+        temp = a[i] + b[j];
+        c[k] = (temp % 10) + carry;
+        carry = temp / 10;
+        k--;
+        i--;
+        j--;
     }
-    bool flag=false;
-    for (int i = 0; i < max(n, m) + 2; i++)
+    while (i >= 0)
     {
-        if(A[i]>0 and flag==false) flag=true;
-        if(flag) cout<<A[i]<<", ";
+        temp = a[i];
+        c[k] = (temp % 10) + carry;
+        carry = temp / 10;
+        k--;
+        i--;
     }
-    cout<<"END";
-    return 0;
+    while (j >= 0)
+    {
+        temp = b[j];
+        c[k] = (temp % 10) + carry;
+        carry = temp / 10;
+        k--;
+        j--;
+    }
+    for (i = 0; i < n || i < m; i++)
+        printf("%d, ", c[i]);
+    printf("END");
 }

@@ -2,23 +2,28 @@
 using namespace std;
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    int n, num, res = 0;
+
+    int i, j, n, ans = 0, sum = 0;
     cin >> n;
-    int A[n];
-    for (int i = 0; i < n; i++)
+    int a[n];
+    for (i = 0; i < n; i++)
     {
-        cin >> A[i];
+        cin >> a[i];
     }
-    for (int i = 0; i < n; i += 3)
+    for (j = 0; j < 32; j++)
     {
-        if (A[i] ^ A[i + 2])
+        sum = 0;
+        for (i = 0; i < n; i++)
         {
-            cout << A[i];
-            break;
+            if ((1 << j) & a[i])
+                sum++;
+        }
+        if (sum % 3 == 1)
+        {
+            ans += (1 << j);
         }
     }
+    cout << ans;
 
     return 0;
 }
