@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
-# define mx 100
+#define mx 100
 bool canPlace(int s[mx][mx], int i, int j, int num, int n)
 {
     for (int it = 0; it < n; it++)
@@ -39,12 +39,12 @@ bool sudokuSolver(int s[mx][mx], int i, int j, int n)
         }
         return true;
     }
-    // if row is solved goto next 
+    // if row is solved goto next
     if (j == n)
         return sudokuSolver(s, i + 1, 0, n);
-        //if filled dont change
-    if(s[i][j]!=0) 
-        return sudokuSolver(s,i,j+1,n);
+    //if filled dont change
+    if (s[i][j] != 0)
+        return sudokuSolver(s, i, j + 1, n);
 
     for (int num = 1; num <= n; num++)
     {
@@ -52,13 +52,13 @@ bool sudokuSolver(int s[mx][mx], int i, int j, int n)
         {
             //assume
             s[i][j] = num;
-            if(sudokuSolver(s,i,j+1,n)) return true;
+            if (sudokuSolver(s, i, j + 1, n))
+                return true;
             //backtrack
             s[i][j] = 0;
         }
     }
-    
-    
+
     return false;
 }
 int main()
@@ -67,14 +67,14 @@ int main()
     cin.tie(NULL);
     cout.tie(NULL);
     int n, sudoku[mx][mx] = {0};
-    cin>>n;
+    cin >> n;
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
         {
-            cin>>sudoku[i][j];
-        }  
+            cin >> sudoku[i][j];
+        }
     }
-    sudokuSolver(sudoku,0,0,n);
+    sudokuSolver(sudoku, 0, 0, n);
     return 0;
 }

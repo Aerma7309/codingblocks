@@ -6,14 +6,14 @@ char maze[1000][1000];
 int n, m;
 bool ratInMaze(int i, int j)
 {
-    if (i == m-1  and j == n-1 )
+    if (i == m - 1 and j == n - 1)
     {
-        res[m-1][n-1]=true;
+        res[m - 1][n - 1] = true;
         for (int a = 0; a < m; a++)
         {
             for (int b = 0; b < n; b++)
             {
-                cout << res[a][b]<<" ";
+                cout << res[a][b] << " ";
             }
             cout << endl;
         }
@@ -47,7 +47,8 @@ int main()
             cin >> maze[i][j];
         }
     }
-    if(!ratInMaze(0, 0)) cout<<-1;
+    if (!ratInMaze(0, 0))
+        cout << -1;
 
     return 0;
 }
