@@ -4,7 +4,7 @@ int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    int t, num, xr, res1 = 0, res2 = 0;
+    int t, num, xr, res1 = 0, res2 = 0, sb;
     cin >> t;
     int A[t];
     for (int i = 0; i < t; i++)
@@ -16,10 +16,11 @@ int main()
     {
         xr ^= A[i];
     }
-
+    // find value of rightmost set bit
+    sb = xr & (~(xr - 1));
     for (int i = 0; i < t; i++)
     {
-        if (A[i] & 1)
+        if (A[i] & sb)
             res1 ^= A[i];
         else
             res2 ^= A[i];
