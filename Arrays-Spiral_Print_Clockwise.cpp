@@ -14,28 +14,28 @@ int main()
             cin >> a[i][j];
         }
     }
-    int rs = 0, re = r - 1, cs = 0, ce = c - 1;
-    while (rs <= re and cs <= ce)
+    int rs = 0, re = r, cs = 0, ce = c;
+    while (rs < re and cs < ce)
     {
-        for (int i = cs; i <= ce; i++)
+        for (int i = cs; i < ce; i++)
         {
             cout << a[rs][i] << ", ";
         }
         rs++;
-        for (int i = rs; i <= re; i++)
+        for (int i = rs; i < re; i++)
         {
-            cout << a[i][ce] << ", ";
+            cout << a[i][ce - 1] << ", ";
         }
         ce--;
-        if (cs < ce or rs < re)
+        if (rs < re)
         {
-            for (int i = ce; i >= cs; i--)
-                cout << a[re][i] << ", ";
+            for (int i = ce - 1; i >= cs; i--)
+                cout << a[re - 1][i] << ", ";
             re--;
         }
-        if (cs < ce or rs < re)
+        if (cs < ce)
         {
-            for (int i = re; i >= rs; i--)
+            for (int i = re - 1; i >= rs; i--)
                 cout << a[i][cs] << ", ";
             cs++;
         }
