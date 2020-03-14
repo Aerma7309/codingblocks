@@ -1,4 +1,4 @@
 .*
-i
-o
-r
+input.txt
+output.txt
+result.txt
