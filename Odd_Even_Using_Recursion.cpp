@@ -1,8 +1,6 @@
 // @author: Abhimanyu Maurya
 
 #include <iostream>
-#include <cstring>
-#include <set>
 using namespace std;
 
 //fast i/o
@@ -16,31 +14,26 @@ FILE *fr = freopen("input.txt", "r", stdin);
 FILE *fw = freopen("output.txt", "w", stdout);
 #endif
 
-set<string> p;
-
-void permute(char in[], int i)
+void print(int n)
 {
-    if (in[i] == '\0')
-    {
-        p.insert(in);
+    if (n <= 0)
         return;
-    }
-    for (int j = i; in[j] != '\0'; j++)
+    if (n & 1)
     {
-        swap(in[i], in[j]);
-        permute(in, i + 1);
-        swap(in[i], in[j]);
+        cout << n << "\n";
+        print(n - 1);
+    }
+    else
+    {
+        print(n - 1);
+        cout << n << "\n";
     }
 }
 
 int main()
 {
-    char s[15];
-    cin >> s;
-    permute(s, 0);
-    for (auto &i : p)
-    {
-        cout << i << "\n";
-    }
+    int n;
+    cin >> n;
+    print(n);
     return 0;
 }
