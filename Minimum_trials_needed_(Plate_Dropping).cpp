@@ -1,38 +1,37 @@
-#include<iostream>
-int count =0;
-void BSearch(int l,int r,int n)
-{
-    int mid= (l+r)>>1;
-    if(mid==n) 
-    {
-        count++;
-        return;
-    }
-    if(mid > n) return BSearch(l,mid-1,n);
-    else return BSearch(mid+1,r,n);
-}
+#include <iostream>
+#include <cstring>
+#include <climits>
 
 using namespace std;
+
+int dp[1005][1005];
+
+int minTrials(int floors, int plates)
+{
+    if (plates == 1)
+        return floors;
+    if (floors == 1 || floors == 0)
+        return floors;
+    if (dp[floors][plates] != -1)
+        return dp[floors][plates];
+    int minn = INT_MAX;
+    for (size_t i = 1; i <= floors; i++)
+    {
+        minn = min(minn, max(minTrials(i - 1, plates - 1), minTrials(floors - i, plates)));
+    }
+    return dp[floors][plates] = minn + 1;
+}
+
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    int t,k,n,floor[11];
-    for (int i = 0; i < 11; i++)
-    {
-        floor[i]=i;
-    }
-    
-    cin>>t;
+    int t, floors, plates;
+    cin >> t;
+
     while (t--)
     {
-        count=0;
-        cin>>k>>n;
-        BSearch(1,n,k);
+        memset(dp, -1, sizeof(dp));
+        cin >> plates >> floors;
+        cout << minTrials(floors, plates) << "\n";
     }
-    
-
-
     return 0;
 }
