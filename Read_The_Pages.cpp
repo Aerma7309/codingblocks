@@ -11,7 +11,6 @@ bool ot = cout.tie(0);
 
 bool isValid(ll a[], ll n, ll k, ll ans)
 {
-    // if(n==0 or k==0 or ans==0) return false;
     ll s = 1, b = 0;
     for (ll i = 0; i < n; i++)
     {
