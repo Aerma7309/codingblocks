@@ -9,42 +9,41 @@ bool ib = ios_base::sync_with_stdio(0);
 bool it = cin.tie(0);
 bool ot = cout.tie(0);
 
+bool checkDuplicate(string &s)
+{
+    stack<char> Stack;
+    for (char i : s)
+    {
+        if (i == ')')
+        {
+            int count = 0;
+            while (Stack.top() != '(')
+            {
+                count++;
+                Stack.pop();
+            }
+            Stack.pop();
+            if (count < 1)
+                return true;
+        }
+        else
+            Stack.push(i);
+    }
+    return false;
+}
+
 int main()
 {
     int t;
     cin >> t;
+    string str;
     while (t--)
     {
-        stack<char> s;
-        string str;
-        getline(cin, str);
-
-        char ch = '\0';
-        bool flag = true;
-        for (auto &i : str)
-        {
-            if (i != ')')
-                s.push(i);
-            else
-            {
-                int count = 0;
-                while (!s.empty() and s.top() != '(')
-                {
-                    count++;
-                    s.pop();
-                }
-                s.pop();
-                if (count == 0)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-        }
-        if (!flag)
-            cout << "No Duplicates Found\n";
-        else
+        cin >> str;
+        if (checkDuplicate(str))
             cout << "Duplicate Found\n";
+        else
+            cout << "No Duplicates Found\n";
     }
     return 0;
 }
