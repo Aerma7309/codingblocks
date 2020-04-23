@@ -20,11 +20,7 @@ signed main()
     while (i < j)
     {
         res = max(res, (j - i) * (min(v[i], v[j])));
-        if (v[j - 1] > v[j])
-            --j;
-        else if (v[i + 1] > v[i])
-            ++i;
-        else if (v[i] > v[j])
+        if (v[i] > v[j])
             --j;
         else
             ++i;
