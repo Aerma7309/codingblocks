@@ -41,7 +41,7 @@
 * @Author  : Abhimanyu Kumar Maurya (aerma7309@gmail.com)
 */
 #include <bits/stdc++.h>
-    using namespace std;
+using namespace std;
 
 bool ib = ios_base::sync_with_stdio(0);
 bool it = cin.tie(0);
