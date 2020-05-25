@@ -1,6 +1,5 @@
 #include<iostream>
 #include<cmath>
-#include<cassert>
 using namespace std;
 int main()
 {
@@ -8,27 +7,24 @@ int main()
     cin.tie(NULL);
     int n,A;
     cin>>n;
-    bool falg;
+    bool flag;
     while (n--)
     {
         cin>>A;
-        falg=false;
+        flag=false;
         for (int i = 0; i <= (int)sqrt(A); i++)
         {
             for (int j = i; j <= (int)sqrt(A); j++)
             {
                 if ((i*i+j*j)==A)
                 {
-                    assert(i<=j);
                     cout<<'('<<i<<','<<j<<") ";
-                    falg=true;
+                    flag=true;
                 }
                 
             }
-            
         }
-        if(falg) cout<<'\n';
+        if(flag) cout<<'\n';
     }
-    
     return 0;
 }
