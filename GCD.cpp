@@ -1,10 +1,15 @@
 #include<iostream>
-#include<algorithm>
 using namespace std;
 int main()
 {
-    long n1,n2;
-    cin>>n1>>n2;
-    cout<<__gcd(n1,n2);
+    long a,b,t;
+    cin>>a>>b;
+    while (a > 0 and b > 0)
+    {
+        t = a;
+        a = b;
+        b = t % a;
+    }
+    cout << (a ? a : b);
     return 0;
 }
