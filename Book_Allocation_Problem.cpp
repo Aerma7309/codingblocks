@@ -23,7 +23,7 @@ bool isValid(ll a[], ll n, ll k, ll ans)
             b = a[i];
             s++;
         }
-        if (s > k)
+        if (s > k or a[i]>ans)
             return false;
     }
     return true;
